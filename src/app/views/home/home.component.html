@@ -16,6 +16,9 @@
 <app-card [repositories]=repositories [username]="username" [onSelection]="getDetails" [progress]="progress"
     (progressEvent)="receiveUpdate($event)">
 </app-card>
-<div class="card-columns mt-4" *ngIf="progress===100">
-    <h1>hi</h1>
+<div class="card mt-4" *ngIf="progress===100">
+    <div class="card-body">
+        {{_githubService.getDetails()}}
+    </div>
 </div>
+<button type="submit" class="mt-4" *ngIf="progress!==35" (click)="goBackInProgress()">Back</button>

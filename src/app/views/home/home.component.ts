@@ -1,22 +1,19 @@
-import { CardComponent } from './../../components/card/card.component';
 import { GithubService } from './../../services/github.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  // @ViewChild(CardComponent, {static: false}) card;
-
   username: string = '';
   progress: Number = 35;
   repositories: []
-  readMeDetails: string = ''
+  readMeDetails;
 
-  constructor(private _githubService: GithubService) { }
+  constructor(private _githubService: GithubService) {
+  }
 
   public getGitInfo() {
     this._githubService.fetchRepositories(this.username).subscribe((result: any) => {
@@ -28,23 +25,22 @@ export class HomeComponent implements OnInit {
   }
 
   public getDetails(repositoryName, username) {
-    this._githubService.fetchReadme(repositoryName, username).subscribe((result: any) => {
-      if (result.content) {
-        this.readMeDetails = atob(result.content);
-        this.progress = 100;
-      }
-    })
+    this._githubService.fetchReadme(repositoryName, username);
+  }
+
+  public goBackInProgress() {
+    if (this.progress = 70) {
+      this.progress = 35;
+    } else if (this.progress = 100) {
+      this.progress = 70;
+    }
   }
 
   ngOnInit() {
+    this._githubService.getDetails();
   }
-
-  // ngAfterViewInit() {
-  //   this.progress = this.card.progress
-  // }
 
   receiveUpdate($event) {
-    this.progress = this.progress
+    this.progress = $event;
   }
-
 }

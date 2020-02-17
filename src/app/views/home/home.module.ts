@@ -1,3 +1,4 @@
+import { GithubService } from './../../services/github.service';
 import { CardComponent } from './../../components/card/card.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -13,7 +14,8 @@ import { NgModule } from '@angular/core';
       CommonModule,
       FormsModule
   ],
-  declarations: [HomeComponent, CardComponent ]
+  declarations: [HomeComponent, CardComponent ],
+  providers: [GithubService]
 })
 
 export class HomeModule { }

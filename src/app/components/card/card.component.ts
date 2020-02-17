@@ -10,6 +10,7 @@ export class CardComponent implements OnInit {
 
   @Input() repositories: [];
   @Input() username: string = '';
+  @Input() readMeDetails: String;
   @Input() onSelection: (repositoryName, username) => {};
   @Input() progress: Number;
   @Output() progressEvent = new EventEmitter<Number>();
@@ -23,6 +24,7 @@ export class CardComponent implements OnInit {
     if (this.onSelection) {
       this.onSelection(repositoryName, username);
     }
+    this.progress = 100;
     this.updateProgress();
   }
 
