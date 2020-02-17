@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators'
-import { throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -14,10 +12,7 @@ export class GithubService {
     }
 
     fetchRepositories(username) {
-        return this.http.get('https://api.github.com/users/' + username + '/repos').pipe(
-            retry(1),
-            catchError(this.handleError)
-        );
+        return this.http.get('https://api.github.com/users/' + username + '/repos')
     }
 
     getDetails() {
@@ -31,10 +26,5 @@ export class GithubService {
             }
             this.getDetails();
         })
-    }
-
-    handleError(error: HttpErrorResponse){
-        console.log("lalalalalalalala");
-        return throwError(error);
     }
 }
