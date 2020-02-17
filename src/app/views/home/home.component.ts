@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   repositories: []
   readMeDetails;
 
-  constructor(private _githubService: GithubService) {
+  constructor(public _githubService: GithubService) {
   }
 
   public getGitInfo() {
