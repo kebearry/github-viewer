@@ -1,0 +1,21 @@
+<div class="progress">
+    <div class="progress-bar bg-info" [style.width]="progress+'%'"></div>
+</div>
+<form class="form-group" (ngSubmit)="getGitInfo()" *ngIf="progress===35">
+    <label for="text-input">
+        <h1>Give me the repositories of
+            <span class="emphasizedText">this github user:</span></h1>
+    </label>
+    <div class="input-holder">
+        <input id="text-input" type="text" name="text" placeholder=" " class="form-control" [(ngModel)]="username">
+        <small class="text-muted">We will crawl <span class="emphasizedText">this user's</span> github
+            repositories.</small>
+    </div>
+    <button type="submit" class="mt-4">Let's go!</button>
+</form>
+<app-card [repositories]=repositories [username]="username" [onSelection]="getDetails" [progress]="progress"
+    (progressEvent)="receiveUpdate($event)">
+</app-card>
+<div class="card-columns mt-4" *ngIf="progress===100">
+    <h1>hi</h1>
+</div>

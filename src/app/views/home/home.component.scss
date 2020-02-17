@@ -1,0 +1,22 @@
+$color1: #15b4a0;
+$main-padding: 15vh;
+form {
+    position: relative;
+    flex: none;
+    flex-basis: 100%;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+    padding-top: 9vh;
+    .input-holder {
+      margin-top: 10vh;
+    } 
+}
+
+.emphasizedText{
+    color: $color1
+}
+
+ .bg-info{
+     color: $color1 !important;
+     background-color: $color1 !important;
+ }

@@ -1,0 +1,11 @@
+<div class="card-columns mt-4" *ngIf="progress===70">
+    <div class="card" *ngFor="let repository of repositories">
+        <div class="card-body">
+            <h5 class="card-title">{{repository.name}}</h5>
+            <p class="card-text">{{repository.description}}</p>
+            <a href="{{repository.git_url.substr(4)}}" target=”_blank” class="btn small btn-info ">Go to Github
+                Repository</a>
+            <button class="btn small btn-dark ml-2" (click)="getDetails(repository.name, username)">View ReadMe</button>
+        </div>
+    </div>
+</div>
